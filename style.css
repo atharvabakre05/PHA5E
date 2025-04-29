@@ -1,0 +1,235 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0e0e0e;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Preloader Styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.preloader-text {
+  display: flex;
+  gap: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #f39c12;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.preloader-text span {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: letterFadeInUp 0.5s ease forwards;
+}
+
+.preloader-text span:nth-child(1) { animation-delay: 0.2s; }
+.preloader-text span:nth-child(2) { animation-delay: 0.4s; }
+.preloader-text span:nth-child(3) { animation-delay: 0.6s; }
+.preloader-text span:nth-child(4) { animation-delay: 0.8s; }
+.preloader-text span:nth-child(5) { animation-delay: 1s; }
+
+@keyframes letterFadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero Section Styles */
+.hero {
+  padding: 80px 30px;
+  text-align: center;
+}
+
+.hero-text {
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-text h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  color: #dddddd;
+  transition: color 0.3s ease;
+}
+
+.hero-images {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 60px;
+  width: 350px;
+  transition: z-index 0.2s;
+}
+
+/* CAPS heading above image */
+.caps-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #f39c12;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, color 0.3s, font-weight 0.3s, letter-spacing 0.3s;
+}
+
+/* Image container */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: visible;
+  border-radius: 16px;
+  transition: transform 0.5s ease;
+  perspective: 1000px;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: 
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.4s ease,
+    opacity 0.4s ease,
+    box-shadow 0.4s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  cursor: pointer;
+  filter: grayscale(70%);
+  opacity: 1;
+  z-index: 1;
+  will-change: transform;
+}
+
+/* Caption below box */
+.box-caption {
+  font-size: 1.05rem;
+  color: #bbbbbb;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s, color 0.3s, font-size 0.3s;
+}
+
+/* Show text on hover */
+.image-box:hover .caps-text {
+  opacity: 1;
+  transform: translateY(0);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.image-box:hover .box-caption {
+  opacity: 1;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+/* Fade animation for hero text */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-images {
+    gap: 20px;
+  }
+
+  .image-box {
+    width: 280px;
+  }
+
+  .image-container {
+    height: 170px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+}
+
+.image-box {
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin-bottom: 0px;
+}
+
+/* --- HOVER INTERACTIONS --- */
+
+/* When hovering an image box, make other images vector-like */
+.hero-images:hover .image-box:not(:hover) .hero-image {
+  filter: grayscale(100%) contrast(170%) blur(1px);
+  opacity: 0.5;
+  z-index: 1;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* When hovering, bring hovered image to front and full color */
+.hero-images .image-box:hover .hero-image {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.07) translate3d(var(--tx, 0), var(--ty, 0), 0);
+  z-index: 2;
+  box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+}
+
+/* Mouse movement effect (handled by JS with --tx, --ty) */
+
+/* Reset mouse-follow effect on mouseleave */
+.hero-image {
+  --tx: 0px;
+  --ty: 0px;
+  --scale: 1;
+}
