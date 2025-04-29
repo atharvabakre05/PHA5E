@@ -1,4 +1,3 @@
-/* Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +11,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Preloader Styles */
 #preloader {
   position: fixed;
   top: 0;
@@ -56,7 +54,6 @@ body {
   }
 }
 
-/* Hero Section Styles */
 .hero {
   padding: 80px 30px;
   text-align: center;
@@ -100,7 +97,6 @@ body {
   transition: z-index 0.2s;
 }
 
-/* CAPS heading above image */
 .caps-text {
   font-size: 1.3rem;
   font-weight: 700;
@@ -113,7 +109,6 @@ body {
   transition: opacity 0.6s ease, transform 0.6s ease, color 0.3s, font-weight 0.3s, letter-spacing 0.3s;
 }
 
-/* Image container */
 .image-container {
   position: relative;
   width: 100%;
@@ -142,7 +137,6 @@ body {
   will-change: transform;
 }
 
-/* Caption below box */
 .box-caption {
   font-size: 1.05rem;
   color: #bbbbbb;
@@ -151,7 +145,6 @@ body {
   transition: opacity 0.6s ease 0.3s, color 0.3s, font-size 0.3s;
 }
 
-/* Show text on hover */
 .image-box:hover .caps-text {
   opacity: 1;
   transform: translateY(0);
@@ -166,7 +159,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* Fade animation for hero text */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -206,9 +198,6 @@ body {
   margin-bottom: 0px;
 }
 
-/* --- HOVER INTERACTIONS --- */
-
-/* When hovering an image box, make other images vector-like */
 .hero-images:hover .image-box:not(:hover) .hero-image {
   filter: grayscale(100%) contrast(170%) blur(1px);
   opacity: 0.5;
@@ -216,7 +205,6 @@ body {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* When hovering, bring hovered image to front and full color */
 .hero-images .image-box:hover .hero-image {
   filter: grayscale(0%);
   opacity: 1;
@@ -225,9 +213,6 @@ body {
   box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
 }
 
-/* Mouse movement effect (handled by JS with --tx, --ty) */
-
-/* Reset mouse-follow effect on mouseleave */
 .hero-image {
   --tx: 0px;
   --ty: 0px;
